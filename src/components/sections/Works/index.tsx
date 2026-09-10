@@ -46,7 +46,7 @@ export default function Works() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-xs sm:text-sm font-mono text-gray-500 uppercase mb-12 sm:mb-10 flex items-center gap-2">
+        <h2 className="text-sm font-mono text-gray-500 uppercase mb-4 flex items-center gap-2">
           <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
           / Selected Projects
         </h2>

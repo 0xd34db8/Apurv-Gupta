@@ -45,13 +45,13 @@ export default function WorkExperience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs sm:text-sm font-mono text-gray-500 uppercase mb-12 sm:mb-10 flex items-center gap-2"
+          className="text-sm font-mono text-gray-500 uppercase mb-4 sm:mb-4 flex items-center gap-2"
         >
           <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
           / Professional Journey
         </motion.h2>
 
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-12 sm:mb-20">
+        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-5 sm:mb-20">
           <StreakBurst
             text="Experience"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2"
@@ -68,7 +68,7 @@ export default function WorkExperience() {
             transition={{ duration: 0.5, delay: i * 0.15 }}
             className="group border-b border-white/5 py-8 sm:py-12 flex flex-col gap-4 hover:bg-blue-500/[0.01] transition-all duration-500"
           >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+            <div className="flex flex-col pb-15 md:pb-0  md:flex-row md:justify-between md:items-start gap-4">
               <div className="max-w-3xl">
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
                   <TextType
