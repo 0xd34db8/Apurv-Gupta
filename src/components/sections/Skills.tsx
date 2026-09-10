@@ -37,6 +37,13 @@ export default function Skills() {
         }}
       />
 
+      <div
+        className="absolute inset-x-0 bottom-0 h-52 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to top, #090b0e 0%, #090b0e 20%, transparent 100%)",
+        }}
+      />
+
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
         <motion.img
           initial={{ opacity: 0 }}

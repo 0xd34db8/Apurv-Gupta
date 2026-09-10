@@ -32,6 +32,13 @@ export default function WorkExperience() {
         }}
       />
 
+      <div
+        className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to bottom, #090b0e 0%, transparent 100%)",
+        }}
+      />
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
