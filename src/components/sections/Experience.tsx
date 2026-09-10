@@ -66,7 +66,7 @@ export default function WorkExperience() {
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
                   <TextType
                     text={exp.role}
-                    typingSpeed={80}
+                    typingSpeed={3}
                     initialDelay={i * 200}
                     loop={false}
                     cursorCharacter="_"
@@ -76,7 +76,7 @@ export default function WorkExperience() {
                 <p className="text-blue-500/80 mt-2 text-xl sm:text-2xl font-mono transition-colors">
                   {exp.company}
                 </p>
-                
+
                 <ul className="mt-6 space-y-3">
                   {exp.description.map((desc, idx) => (
                     <motion.li

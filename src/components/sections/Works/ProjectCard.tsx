@@ -6,7 +6,7 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
   const [activeImg, setActiveImg] = useState(0);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -18,22 +18,22 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
         <span className="text-blue-500/70 font-mono text-sm tracking-widest">
           00{index + 1}
         </span>
-        
+
         <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
           <TextType
             text={exp.Name}
-            typingSpeed={80}
+            typingSpeed={30}
             initialDelay={index * 200}
             loop={false}
             cursorCharacter="_"
             cursorClassName="text-[hsl(220,100%,60%)] ml-1"
           />
         </h3>
-        
+
         <p className="text-gray-500 uppercase tracking-widest text-xs sm:text-sm font-mono leading-relaxed">
           {exp.desc}
         </p>
-        
+
         <div className="flex flex-wrap gap-2 mt-2">
           {exp.tech.split("•").map((t: string, i: number) => (
             <span
@@ -44,7 +44,7 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
             </span>
           ))}
         </div>
-        
+
         <div className="mt-4">
           {exp.link ? (
             <a
@@ -102,11 +102,10 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
               <button
                 key={imgIdx}
                 onClick={() => setActiveImg(imgIdx)}
-                className={`relative w-24 sm:w-32 aspect-video flex-shrink-0 rounded-lg overflow-hidden border transition-all snap-center ${
-                  activeImg === imgIdx
-                    ? "border-blue-500 opacity-100 ring-1 ring-blue-500/50"
-                    : "border-white/10 opacity-50 hover:opacity-100 hover:border-white/30"
-                }`}
+                className={`relative w-24 sm:w-32 aspect-video flex-shrink-0 rounded-lg overflow-hidden border transition-all snap-center ${activeImg === imgIdx
+                  ? "border-blue-500 opacity-100 ring-1 ring-blue-500/50"
+                  : "border-white/10 opacity-50 hover:opacity-100 hover:border-white/30"
+                  }`}
               >
                 <img
                   src={img}
@@ -130,7 +129,7 @@ export function MobileProjectCard({ exp, index }: { exp: any; index: number }) {
           <h3 className="text-3xl sm:text-4xl md:text-6xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
             <TextType
               text={exp.Name}
-              typingSpeed={80}
+              typingSpeed={3}
               initialDelay={index * 200}
               loop={false}
               cursorCharacter="_"

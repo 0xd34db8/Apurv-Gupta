@@ -43,7 +43,7 @@ const TextType = ({
   hideCursorWhileTyping = false,
   cursorCharacter = "|",
   cursorClassName = "",
-  cursorBlinkDuration = -1,
+  cursorBlinkDuration = 0.5,
   textColors = [],
   variableSpeed,
   onSentenceComplete,
@@ -91,16 +91,14 @@ const TextType = ({
 
   useEffect(() => {
     if (showCursor && cursorRef.current) {
+      gsap.killTweensOf(cursorRef.current);
       gsap.set(cursorRef.current, { opacity: 1 });
       gsap.to(cursorRef.current, {
         opacity: 0,
         duration: cursorBlinkDuration,
-        repeat: 30,
+        repeat: -1,
         yoyo: true,
         ease: "power2.inOut",
-        onComplete: () => {
-          gsap.to(cursorRef.current, { opacity: 0, duration: 0.2 });
-        },
       });
     }
   }, [showCursor, cursorBlinkDuration]);
