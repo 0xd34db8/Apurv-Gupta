@@ -25,12 +25,11 @@ const ShowcaseCard = ({
         delay: index * 0.03,
       }}
       whileTap={{ scale: 0.97 }}
-      className="group relative bg-white/[0.03] border border-white/10 p-4 md:p-8 rounded-lg md:rounded-xl backdrop-blur-md transition-all duration-500 hover:border-[hsl(220,100%,60%)]/30 w-full md:max-w-[350px] overflow-hidden"
+      className="group relative bg-[#050a15] border border-white/10 p-4 md:p-8 rounded-lg md:rounded-xl backdrop-blur-md transition-all duration-500 hover:border-[hsl(220,100%,60%)]/30 w-full md:max-w-[350px] overflow-hidden"
     >
       <div className="absolute inset-0 bg-radial-at-t from-[hsl(220,100%,60%)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="flex items-center gap-1.5 mb-2 md:mb-6">
-        <span className="h-1 w-1 rounded-full bg-[hsl(220,100%,60%)] shadow-[0_0_8px_hsl(220,100%,60%)]" />
         <span className="text-[8px] md:text-[10px] uppercase tracking-[0.15em] text-[hsl(220,100%,60%)]/80 font-mono font-bold">
           {tag}
         </span>
@@ -44,7 +43,6 @@ const ShowcaseCard = ({
         {description}
       </p>
 
-      <div className="absolute bottom-0 left-0 h-[1px] md:h-[2px] w-0 bg-gradient-to-r from-[hsl(220,100%,60%)] to-transparent group-hover:w-full transition-all duration-700 ease-out" />
     </motion.div>
   );
 };

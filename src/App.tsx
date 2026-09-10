@@ -6,6 +6,8 @@ import Hero from "./components/sections/Hero";
 import Works from "./components/sections/Works";
 import WorkExperience from "./components/sections/Experience";
 import Skills from "./components/sections/Skills";
+import Blogs from "./components/sections/Blogs";
+import BlogPost from "./components/sections/BlogPost";
 import Contact from "./components/sections/Contact";
 import Cursor from "./components/ui/Cursor";
 import MottoSeparater from "./components/sections/Motto";
@@ -21,11 +23,31 @@ export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [introFinished, setIntroFinished] = useState(false);
   const [isLandingPage, setIsLandingPage] = useState(false);
-  const hash = window.location.hash;
+  const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
+
+  const [hash, setHash] = useState(window.location.hash);
 
   useEffect(() => {
-    const path = window.location.pathname + window.location.hash;
-    if (path === "/" || (path === "/index.html" && !hash)) {
+    const handleHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    const path = window.location.pathname + hash;
+
+    // Check if it's a blog route
+    if (hash.startsWith("#blog/")) {
+      setActiveBlogId(hash.replace("#blog/", ""));
+      setShowIntro(false);
+      setIntroFinished(true);
+      setIsLandingPage(false);
+      return;
+    } else {
+      setActiveBlogId(null);
+    }
+
+    if (path === "/" || (path === "/index.html" && (!hash || hash === "#home"))) {
       setIsLandingPage(true);
     } else {
       setShowIntro(false);
@@ -62,43 +84,55 @@ export default function App() {
           sparkCount={8}
           duration={400}
         >
-          <main className="min-h-screen w-full bg-[#0a0d12] text-white selection:bg-[#3b82f6] selection:text-white">
-            <Cursor
-              normalCursor={CursorImgNormal}
-              linkCursor={CursorImgLink}
-              size={25}
+          <Cursor
+            normalCursor={CursorImgNormal}
+            linkCursor={CursorImgLink}
+            size={25}
+          />
+          {activeBlogId ? (
+            <BlogPost
+              blogId={activeBlogId}
+              onBack={() => {
+                window.location.hash = "#blogs";
+              }}
             />
-            <Navbar />
-            <Hero startAnimation={!isLandingPage || introFinished} />
-            <Skills />
-            <WorkExperience />
-            <Works />
+          ) : (
+            <main className="min-h-screen w-full bg-[#0a0d12] text-white selection:bg-[#3b82f6] selection:text-white">
+              <Navbar />
+              <Hero startAnimation={!isLandingPage || introFinished} />
+              <Skills />
+              <WorkExperience />
+              <Works />
+              {/* <Blogs /> */}
 
-            <Philosophy />
+              <Philosophy />
 
-            <div className="bg-[#050a15] relative z-10 max-w-6xl mx-auto px-6">
-              <div className="flex flex-wrap lg:flex-nowrap items-bottom justify-center gap-8">
-                <ShowcaseCard
-                  tag="Current Status"
-                  title="Where am I right now?"
-                  description="VIT bhopal university, pursuing B.tech in CSE"
-                />
-                <ShowcaseCard
-                  tag="Future prospects"
-                  title="Where am I planning to go next?"
-                  description="Becoming an AI engineer"
-                />
-                <ShowcaseCard
-                  tag="Execution"
-                  title="What am I building right now?"
-                  description="Working on better and deployable Agentic AI systems and MCP servers"
-                />
+              <div className="w-full bg-[#050a15]">
+                <div className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
+                  <div className="flex flex-wrap lg:flex-nowrap items-bottom justify-center gap-8">
+                    <ShowcaseCard
+                      tag="Current Status"
+                      title="Where am I right now?"
+                      description="VIT bhopal university, pursuing B.tech in CSE"
+                    />
+                    <ShowcaseCard
+                      tag="Future prospects"
+                      title="Where am I planning to go next?"
+                      description="Becoming an AI engineer"
+                    />
+                    <ShowcaseCard
+                      tag="Execution"
+                      title="What am I building right now?"
+                      description="Working on better and deployable Agentic AI systems and MCP servers"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <MottoSeparater />
-            <Contact />
-          </main>
+              <MottoSeparater />
+              <Contact />
+            </main>
+          )}
         </ClickSpark>
       </div>
     </>

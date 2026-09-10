@@ -31,6 +31,7 @@ export default function Navbar() {
           <a href="#work" className="hover:text-[hsl(220,100%,60%)] transition-colors">Projects</a>
           <a href="#experience" className="hover:text-[hsl(220,100%,60%)] transition-colors">Experience</a>
           <a href="#skills" className="hover:text-[hsl(220,100%,60%)] transition-colors">Tech</a>
+          <a href="#blogs" className="hover:text-[hsl(220,100%,60%)] transition-colors">Blogs</a>
           <a href="#contact" className="hover:text-[hsl(220,100%,60%)] transition-colors">Contact</a>
         </div>
 
@@ -64,6 +65,7 @@ export default function Navbar() {
               <a href="#work" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Projects</a>
               <a href="#experience" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Experience</a>
               <a href="#skills" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Tech</a>
+              <a href="#blogs" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Blogs</a>
               <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Contact</a>
             </div>
           </motion.div>
