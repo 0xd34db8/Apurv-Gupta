@@ -32,18 +32,18 @@ export default function Works() {
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-sm font-mono text-gray-500 uppercase mb-4 flex items-center gap-2">
+        <h3 className="text-sm font-mono text-gray-500 uppercase mb-4 flex items-center gap-2">
           <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
           / Selected Projects
-        </h2>
+        </h3>
 
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-5 sm:mb-20">
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-5 sm:mb-20">
           <StreakBurst
             text="Works"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white"
             delay={0.4}
           />
-        </h1>
+        </h2>
 
         {projects.map((exp, i) => (
           <div key={i}>

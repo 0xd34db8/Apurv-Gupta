@@ -58,17 +58,17 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-sm font-mono text-gray-500 uppercase mb-4 tracking-widest flex items-center gap-2">
+            <h3 className="text-sm font-mono text-gray-500 uppercase mb-4 tracking-widest flex items-center gap-2">
               <span className="inline-block w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
               / Tech Stack
-            </h2>
-            <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline">
+            </h3>
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline">
               <StreakBurst
                 text="Skillset"
                 className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white"
                 delay={0.4}
               />
-            </h1>
+            </h2>
           </div>
         </div>
 

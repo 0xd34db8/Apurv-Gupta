@@ -73,7 +73,7 @@ export default function Blogs() {
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2
+        <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -82,15 +82,15 @@ export default function Blogs() {
         >
           <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
           / Thoughts & Insights
-        </motion.h2>
+        </motion.h3>
 
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-12 sm:mb-20">
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-12 sm:mb-20">
           <StreakBurst
             text="Blogs"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2"
             delay={0.4}
           />
-        </h1>
+        </h2>
 
         <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 snap-x snap-mandatory no-scrollbar">
           {blogs.map((blog, i) => (
