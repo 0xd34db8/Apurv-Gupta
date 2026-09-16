@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import "./App.css";
 import Curtain from "./components/ui/Curtain";
@@ -30,7 +31,9 @@ export default function App() {
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
-      lerp: 0.1,
+      lenisOptions: {
+        lerp: 0.1,
+      }
     });
 
     return () => {
