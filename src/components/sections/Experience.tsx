@@ -4,6 +4,7 @@ import experienceData from "../../data/experience.json";
 import TextType from "../ui/TextType";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import WIREFRAME from "../../assets/Wireframe.png";
 
 interface ExperienceProps {
   exp: {
@@ -27,7 +28,7 @@ const ExperienceCard = ({ exp, i }: ExperienceProps) => {
       className="relative mb-12 last:mb-0 group"
     >
       <div
-        className="relative p-6 sm:p-8 rounded-2xl bg-[#0d1117]/60 backdrop-blur-md border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] cursor-pointer sm:cursor-default"
+        className="relative p-6 sm:p-8 rounded-2xl bg-[#0d1117]/60 backdrop-blur-md group-hover:bg-transparent group-hover:backdrop-blur-none border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] cursor-pointer sm:cursor-default"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Glow effect on hover */}
@@ -127,6 +128,18 @@ export default function WorkExperience() {
           background: "linear-gradient(to bottom, #090b0e 0%, transparent 100%)",
         }}
       />
+
+      {/* CHARACTER OVERLAY */}
+      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+        <motion.img
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.35 }}
+          transition={{ duration: 1.5 }}
+          src={WIREFRAME}
+          alt="Wireframe"
+          className="w-full max-w-5xl object-contain brightness-150 contrast-125 md:pl-12 md:pt-70 pt-35"
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2

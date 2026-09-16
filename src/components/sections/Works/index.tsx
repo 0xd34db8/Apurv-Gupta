@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
 import StreakBurst from "../../ui/StreakBurst";
-import WIREFRAME from "../../../assets/Wireframe.png";
 import projects from "../../../data/projects.json";
 import { DesktopProjectCard, MobileProjectCard } from "./ProjectCard";
 
@@ -32,18 +30,6 @@ export default function Works() {
             "radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 60%, #090b0e 100%)",
         }}
       />
-
-      {/* CHARACTER OVERLAY */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <motion.img
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.35 }}
-          transition={{ duration: 1.5 }}
-          src={WIREFRAME}
-          alt="Wireframe"
-          className="w-full max-w-5xl object-contain brightness-150 contrast-125 md:pl-12 md:pt-70 pt-35"
-        />
-      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-sm font-mono text-gray-500 uppercase mb-4 flex items-center gap-2">
