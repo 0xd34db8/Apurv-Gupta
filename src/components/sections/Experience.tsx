@@ -1,13 +1,102 @@
+import { useState } from "react";
 import StreakBurst from "../ui/StreakBurst";
 import experienceData from "../../data/experience.json";
 import TextType from "../ui/TextType";
 import { motion } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
+
+interface ExperienceProps {
+  exp: {
+    role: string;
+    company: string;
+    duration: string;
+    description: string[];
+  };
+  i: number;
+}
+
+const ExperienceCard = ({ exp, i }: ExperienceProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, delay: i * 0.15 }}
+      className="relative mb-12 last:mb-0 group"
+    >
+      <div
+        className="relative p-6 sm:p-8 rounded-2xl bg-[#0d1117]/60 backdrop-blur-md border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] cursor-pointer sm:cursor-default"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {/* Glow effect on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+        <div className={`relative z-10 flex flex-col md:flex-row md:justify-between md:items-start gap-4 ${isExpanded ? 'mb-6' : 'mb-0 sm:mb-6'}`}>
+          <div className="max-w-2xl w-full">
+            <div className="flex justify-between items-center w-full">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-200 transition-all duration-300">
+                <TextType
+                  text={exp.role}
+                  typingSpeed={3}
+                  initialDelay={i * 200}
+                  loop={false}
+                  cursorCharacter="_"
+                  cursorClassName="text-blue-500 ml-1"
+                />
+              </h3>
+              <button
+                className="sm:hidden text-gray-400 hover:text-white p-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsExpanded(!isExpanded);
+                }}
+              >
+                {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+              </button>
+            </div>
+            <p className={`mt-2 text-lg sm:text-xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 font-medium tracking-wide ${!isExpanded ? 'hidden sm:block' : 'block'}`}>
+              {exp.company}
+            </p>
+          </div>
+
+          <div className={`inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-mono text-blue-300 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)] group-hover:border-blue-500/40 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition-all duration-300 whitespace-nowrap self-start ${!isExpanded ? 'hidden sm:inline-flex' : 'inline-flex mt-2 sm:mt-0'}`}>
+            {exp.duration}
+          </div>
+        </div>
+
+        <div className={`relative z-10 ${!isExpanded ? 'hidden sm:block' : 'block mt-6'}`}>
+          <ul className="space-y-4">
+            {exp.description.map((desc: string, idx: number) => (
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.15 + idx * 0.1 }}
+                className="group/item flex items-start gap-4 text-gray-400 hover:text-gray-200 transition-colors duration-300"
+              >
+                <div className="mt-2 flex-shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover/item:bg-blue-400 group-hover/item:shadow-[0_0_10px_rgba(96,165,250,0.8)] group-hover/item:scale-125 transition-all duration-300" />
+                </div>
+                <span className="text-sm sm:text-base font-sans leading-relaxed">
+                  {desc}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 bg-[#090b0e] overflow-hidden"
+      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 bg-[#090b0e] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -59,56 +148,11 @@ export default function WorkExperience() {
           />
         </h1>
 
-        {experienceData.map((exp, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
-            className="group border-b border-white/5 py-8 sm:py-12 flex flex-col gap-4 hover:bg-blue-500/[0.01] transition-all duration-500"
-          >
-            <div className="flex flex-col pb-15 md:pb-0  md:flex-row md:justify-between md:items-start gap-4">
-              <div className="max-w-3xl">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
-                  <TextType
-                    text={exp.role}
-                    typingSpeed={3}
-                    initialDelay={i * 200}
-                    loop={false}
-                    cursorCharacter="_"
-                    cursorClassName="text-[hsl(220,100%,60%)] ml-1"
-                  />
-                </h3>
-                <p className="text-blue-500/80 mt-2 text-xl sm:text-2xl font-mono transition-colors">
-                  {exp.company}
-                </p>
-
-                <ul className="mt-6 space-y-3">
-                  {exp.description.map((desc, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.15 + idx * 0.1, type: "spring", stiffness: 120, damping: 12 }}
-                      className="text-gray-400 text-sm sm:text-base font-sans leading-relaxed flex items-start gap-3"
-                    >
-                      <span className="text-blue-500 mt-1.5 text-xs">▹</span>
-                      <span>{desc}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="text-left md:text-right mt-4 md:mt-0 whitespace-nowrap">
-                <p className="font-mono text-sm sm:text-base text-gray-500">
-                  {exp.duration}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+        <div className="relative border-l border-white/10 pl-6 sm:pl-10 ml-4 sm:ml-0 m-8 sm:mt-16">
+          {experienceData.map((exp, i) => (
+            <ExperienceCard key={i} exp={exp} i={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

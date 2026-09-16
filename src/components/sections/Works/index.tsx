@@ -51,7 +51,7 @@ export default function Works() {
           / Selected Projects
         </h2>
 
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-12 sm:mb-20">
+        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-5 sm:mb-20">
           <StreakBurst
             text="Works"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white"

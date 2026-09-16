@@ -15,6 +15,7 @@ import Philosophy from "./components/sections/Philosophy";
 import ShowcaseCard from "./components/ui/ShowcaseCard";
 import ClickSpark from "./components/ui/ClickSpark";
 import { Analytics } from "@vercel/analytics/react";
+import LocomotiveScroll from "locomotive-scroll";
 
 import CursorImgNormal from "./assets/Cursor/normal.png";
 import CursorImgLink from "./assets/Cursor/link.png";
@@ -26,6 +27,16 @@ export default function App() {
   const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
 
   const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const locomotiveScroll = new LocomotiveScroll({
+      lerp: 0.1,
+    });
+
+    return () => {
+      if (locomotiveScroll) locomotiveScroll.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => setHash(window.location.hash);
