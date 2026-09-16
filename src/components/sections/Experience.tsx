@@ -28,7 +28,7 @@ const ExperienceCard = ({ exp, i }: ExperienceProps) => {
       className="relative mb-12 last:mb-0 group"
     >
       <div
-        className="relative p-6 sm:p-8 rounded-2xl bg-[#0d1117]/60 backdrop-blur-md group-hover:bg-transparent group-hover:backdrop-blur-none border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] cursor-pointer sm:cursor-default"
+        className="relative p-6 sm:p-8 rounded-2xl bg-transparent sm:bg-[#0d1117]/60 sm:backdrop-blur-md group-hover:bg-transparent group-hover:backdrop-blur-none border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] cursor-pointer sm:cursor-default"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Glow effect on hover */}

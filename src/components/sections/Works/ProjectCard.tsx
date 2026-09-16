@@ -1,8 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import TextType from "../../ui/TextType";
+export interface ProjectExperience {
+  Name: string;
+  desc: string;
+  tech: string;
+  link?: string;
+  link_name?: string;
+  images?: string[];
+}
 
-export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) {
+export function DesktopProjectCard({ exp, index }: { exp: ProjectExperience; index: number }) {
   const [activeImg, setActiveImg] = useState(0);
 
   return (
@@ -22,7 +30,7 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
         <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
           <TextType
             text={exp.Name}
-            typingSpeed={30}
+            typingSpeed={25}
             initialDelay={index * 200}
             loop={false}
             cursorCharacter="_"
@@ -74,7 +82,7 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
             {/* Open full screen button */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/mainImg:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
               <button
-                onClick={() => window.open(exp.images[activeImg], "_blank")}
+                onClick={() => window.open(exp.images?.[activeImg], "_blank")}
                 className="bg-blue-600/20 backdrop-blur-md p-2.5 rounded-lg border border-white/20 hover:bg-white/20 transition-all cursor-pointer"
               >
                 <svg
@@ -121,7 +129,7 @@ export function DesktopProjectCard({ exp, index }: { exp: any; index: number }) 
   );
 }
 
-export function MobileProjectCard({ exp, index }: { exp: any; index: number }) {
+export function MobileProjectCard({ exp, index }: { exp: ProjectExperience; index: number }) {
   return (
     <div className="xl:hidden group border-b border-white/5 py-8 sm:py-12 flex flex-col gap-4 hover:bg-blue-500/[0.01] transition-all duration-500">
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
@@ -129,7 +137,7 @@ export function MobileProjectCard({ exp, index }: { exp: any; index: number }) {
           <h3 className="text-3xl sm:text-4xl md:text-6xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
             <TextType
               text={exp.Name}
-              typingSpeed={3}
+              typingSpeed={15}
               initialDelay={index * 200}
               loop={false}
               cursorCharacter="_"
