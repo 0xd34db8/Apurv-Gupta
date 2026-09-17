@@ -36,8 +36,13 @@ export default function App() {
       },
     });
 
+    // @ts-expect-error: window.locomotiveScroll is not typed
+    window.locomotiveScroll = locomotiveScroll;
+
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();
+      // @ts-expect-error: window.locomotiveScroll is not typed
+      delete window.locomotiveScroll;
     };
   }, []);
 

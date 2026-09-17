@@ -12,6 +12,13 @@ export default function Navbar() {
           <a
             href="#home"
             aria-label="Home"
+            onClick={(e) => {
+              e.preventDefault();
+              // @ts-expect-error: window.locomotiveScroll is not typed
+              if (window.locomotiveScroll) window.locomotiveScroll.scrollTo("#home");
+              else document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "#home");
+            }}
             className="flex items-center gap-1 select-none font-medium"
           >
             <svg
@@ -28,11 +35,22 @@ export default function Navbar() {
         
         {/* Desktop Links */}
         <div className="hidden md:flex gap-8 text-xs font-medium uppercase tracking-[0.2em]">
-          <a href="#work" className="hover:text-[hsl(220,100%,60%)] transition-colors">Projects</a>
-          <a href="#experience" className="hover:text-[hsl(220,100%,60%)] transition-colors">Experience</a>
-          <a href="#skills" className="hover:text-[hsl(220,100%,60%)] transition-colors">Tech</a>
-          <a href="#blogs" className="hover:text-[hsl(220,100%,60%)] transition-colors">Blogs</a>
-          <a href="#contact" className="hover:text-[hsl(220,100%,60%)] transition-colors">Contact</a>
+          {["work", "experience", "skills", "blogs", "contact"].map((section) => (
+            <a
+              key={section}
+              href={`#${section}`}
+              onClick={(e) => {
+                e.preventDefault();
+                // @ts-expect-error: window.locomotiveScroll is not typed
+                if (window.locomotiveScroll) window.locomotiveScroll.scrollTo(`#${section}`);
+                else document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", `#${section}`);
+              }}
+              className="hover:text-[hsl(220,100%,60%)] transition-colors"
+            >
+              {section === "work" ? "Projects" : section === "skills" ? "Tech" : section}
+            </a>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -62,11 +80,23 @@ export default function Navbar() {
               <X size={32} />
             </button>
             <div className="flex flex-col gap-8 text-2xl font-medium uppercase tracking-[0.2em] text-center">
-              <a href="#work" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Projects</a>
-              <a href="#experience" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Experience</a>
-              <a href="#skills" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Tech</a>
-              <a href="#blogs" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Blogs</a>
-              <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-[hsl(220,100%,60%)] transition-colors">Contact</a>
+              {["work", "experience", "skills", "blogs", "contact"].map((section) => (
+                <a
+                  key={section}
+                  href={`#${section}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    // @ts-expect-error: window.locomotiveScroll is not typed
+                    if (window.locomotiveScroll) window.locomotiveScroll.scrollTo(`#${section}`);
+                    else document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState(null, "", `#${section}`);
+                  }}
+                  className="hover:text-[hsl(220,100%,60%)] transition-colors"
+                >
+                  {section === "work" ? "Projects" : section === "skills" ? "Tech" : section}
+                </a>
+              ))}
             </div>
           </motion.div>
         )}
