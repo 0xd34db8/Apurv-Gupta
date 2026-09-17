@@ -1,5 +1,5 @@
 ---
-title: "The Phantom Release: Git Archaeology and Debugging x360ce"
+title: "Git Archaeology and Debugging x360ce"
 description: "How a mix of Python executable analysis and Git history traversal uncovered a non-existent version in a popular open-source repository."
 date: "September 17, 2026"
 tags: ["Git", "Python", "Debugging", "Open Source"]
