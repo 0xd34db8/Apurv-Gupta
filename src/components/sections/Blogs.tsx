@@ -96,6 +96,8 @@ export default function Blogs() {
           {blogs.map((blog, i) => (
             <motion.a
               href={`#blog/${blog.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
               key={blog.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

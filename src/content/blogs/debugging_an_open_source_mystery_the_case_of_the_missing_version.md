@@ -26,7 +26,7 @@ Before diving into the source code, I needed to confirm exactly what the users w
 ```python
 import pefile
 
-pe = pefile.PE("x360ce.exe")
+pe = pefile.PE("x360ce_x86.exe")
 for file_info in pe.FileInfo[0]:
     if file_info.Key.decode() == "StringFileInfo":
         for st in file_info.StringTable:

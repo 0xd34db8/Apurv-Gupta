@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
@@ -12,10 +13,16 @@ const blogFiles = import.meta.glob("../../content/blogs/*.md", {
 export default function BlogPost({ blogId, onBack }: { blogId: string; onBack: () => void }) {
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(true);
+  const [currentBlogId, setCurrentBlogId] = useState(blogId);
+
+  if (blogId !== currentBlogId) {
+    setCurrentBlogId(blogId);
+    setLoading(true);
+  }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setLoading(true);
+    // Ensure we scroll to top after any layout shifts or hash-based scrolling
+    setTimeout(() => window.scrollTo(0, 0), 0);
 
     const matchingKey = Object.keys(blogFiles).find((path) =>
       path.endsWith(`/${blogId}.md`)
@@ -65,7 +72,7 @@ export default function BlogPost({ blogId, onBack }: { blogId: string; onBack: (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="prose prose-invert prose-lg prose-blue max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-500 hover:prose-a:text-blue-400 prose-img:rounded-xl"
+            className="prose prose-invert prose-lg prose-blue max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-500 hover:prose-a:text-blue-400 prose-img:rounded-xl prose-code:before:content-none prose-code:after:content-none"
           >
             <ReactMarkdown>{body}</ReactMarkdown>
           </motion.div>
