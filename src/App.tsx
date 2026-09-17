@@ -7,7 +7,7 @@ import Hero from "./components/sections/Hero";
 import Works from "./components/sections/Works";
 import WorkExperience from "./components/sections/Experience";
 import Skills from "./components/sections/Skills";
-// import Blogs from "./components/sections/Blogs";
+import Blogs from "./components/sections/Blogs";
 import BlogPost from "./components/sections/BlogPost";
 import Contact from "./components/sections/Contact";
 import Cursor from "./components/ui/Cursor";
@@ -33,7 +33,7 @@ export default function App() {
     const locomotiveScroll = new LocomotiveScroll({
       lenisOptions: {
         lerp: 0.1,
-      }
+      },
     });
 
     return () => {
@@ -61,7 +61,10 @@ export default function App() {
       setActiveBlogId(null);
     }
 
-    if (path === "/" || (path === "/index.html" && (!hash || hash === "#home"))) {
+    if (
+      path === "/" ||
+      (path === "/index.html" && (!hash || hash === "#home"))
+    ) {
       setIsLandingPage(true);
     } else {
       setShowIntro(false);
@@ -117,7 +120,7 @@ export default function App() {
               <Skills />
               <WorkExperience />
               <Works />
-              {/* <Blogs /> */}
+              <Blogs />
 
               <Philosophy />
 
