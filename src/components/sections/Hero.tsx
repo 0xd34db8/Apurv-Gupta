@@ -27,7 +27,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
     mass: 0.6,
   });
 
-  const LOAD_OFFSET = isMobile ? 20 : 60;
+  // const LOAD_OFFSET = isMobile ? 20 : 60;
   const MOVE_RANGE = isMobile ? 40 : 120;
 
   const greetingX = useTransform(smoothProgress, [0, 0.3], [0, -MOVE_RANGE]);
@@ -37,18 +37,19 @@ export default function Hero({ startAnimation = true }: HeroProps) {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
-    hidden: { x: -24, opacity: 0 },
+    hidden: { y: 40, opacity: 0, filter: "blur(10px)" },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
+      filter: "blur(0px)",
       transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 1.2,
+        ease: [0.19, 1, 0.22, 1],
       },
     },
   };
@@ -59,10 +60,15 @@ export default function Hero({ startAnimation = true }: HeroProps) {
       initial="hidden"
       animate={startAnimation ? "visible" : "hidden"}
       variants={containerVariants}
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 overflow-x-hidden"
+      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 overflow-hidden"
     >
       {/* Background glow */}
-      <div className="absolute top-1/4 -left-10 w-[60vw] md:w-[30vw] h-[60vw] md:h-[30vw] bg-[hsl(220,100%,15%)] rounded-full blur-[80px] md:blur-[120px] opacity-20 pointer-events-none" />
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={startAnimation ? { scale: 1, opacity: 0.2 } : { scale: 0.8, opacity: 0 }}
+        transition={{ duration: 2.5, ease: "easeOut" }}
+        className="absolute top-1/4 -left-10 w-[60vw] md:w-[30vw] h-[60vw] md:h-[30vw] bg-[hsl(220,100%,15%)] rounded-full blur-[80px] md:blur-[120px] pointer-events-none"
+      />
 
       <div className="max-w-7xl w-full mx-auto pt-20 md:pt-10 z-10">
         {/* Status */}
@@ -84,10 +90,10 @@ export default function Hero({ startAnimation = true }: HeroProps) {
           className="text-[14vw] md:text-[12vw] leading-[0.9] md:leading-[0.8] font-bold uppercase tracking-tighter mb-8 md:mb-4"
         >
           <motion.span
-            initial={{ x: LOAD_OFFSET, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            style={{ x: greetingX }}
+            initial={{ y: 80, opacity: 0, rotateX: -40, transformPerspective: 500 }}
+            animate={startAnimation ? { y: 0, opacity: 1, rotateX: 0 } : { y: 80, opacity: 0, rotateX: -40 }}
+            transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
+            style={{ x: greetingX, transformOrigin: "bottom center" }}
             className="inline-block font-light bg-linear-to-r from-gray-500 via-white to-gray-500 bg-clip-text text-transparent md:pb-4"
           >
             Hey, I’m
@@ -96,10 +102,10 @@ export default function Hero({ startAnimation = true }: HeroProps) {
           <br />
 
           <motion.span
-            initial={{ x: -LOAD_OFFSET, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            style={{ x: nameX }}
+            initial={{ y: 80, opacity: 0, rotateX: -40, transformPerspective: 500 }}
+            animate={startAnimation ? { y: 0, opacity: 1, rotateX: 0 } : { y: 80, opacity: 0, rotateX: -40 }}
+            transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1], delay: 0.25 }}
+            style={{ x: nameX, transformOrigin: "bottom center" }}
             className="inline-block md:block whitespace-nowrap bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent font-light md:text-right md:pb-4 md:pr-2"
           >
             Apurv Gupta
@@ -161,10 +167,13 @@ export default function Hero({ startAnimation = true }: HeroProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={startAnimation ? { opacity: 1 } : {}}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.2, duration: 0.2 }}
         className="absolute right-6 bottom-12 hidden xl:block"
       >
-        <p className="rotate-90 origin-right text-[10px] font-mono text-gray-700 uppercase tracking-[1em]">
+        <p
+          className="text-[10px] font-mono text-gray-700 uppercase tracking-[1em]"
+          style={{ writingMode: "vertical-rl" }}
+        >
           Scroll to Explore / 2026 Portfolio
         </p>
       </motion.div>
