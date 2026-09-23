@@ -71,7 +71,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
           className="flex flex-wrap items-center gap-3 mb-8 md:mb-6"
         >
           <div className="flex items-center gap-2 px-3 py-1 ">
-            <p className="text-[hsl(220,100%,60%)] font-mono text-[10px] uppercase tracking-widest">
+            <p className="font-mono text-[12px] uppercase tracking-widest bg-linear-to-r from-white via-gray-400 to-white bg-[length:200%_auto] text-transparent bg-clip-text animate-shimmer">
               Based In Varanasi
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: nameX }}
-            className="inline-block md:block whitespace-nowrap bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent font-light md:text-right md:pb-4"
+            className="inline-block md:block whitespace-nowrap bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent font-light md:text-right md:pb-4 md:pr-2"
           >
             Apurv Gupta
           </motion.span>
