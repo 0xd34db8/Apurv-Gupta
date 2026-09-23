@@ -88,7 +88,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: greetingX }}
-            className="inline-block font-light bg-linear-to-r from-gray-500 via-white to-gray-500 bg-clip-text text-transparent"
+            className="inline-block font-light bg-linear-to-r from-gray-500 via-white to-gray-500 bg-clip-text text-transparent md:pb-4"
           >
             Hey, I’m
           </motion.span>
@@ -100,7 +100,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: nameX }}
-            className="inline-block md:block whitespace-nowrap bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent font-light md:text-right"
+            className="inline-block md:block whitespace-nowrap bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent font-light md:text-right md:pb-4"
           >
             Apurv Gupta
           </motion.span>
