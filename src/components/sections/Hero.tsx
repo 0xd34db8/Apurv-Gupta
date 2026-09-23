@@ -70,18 +70,12 @@ export default function Hero({ startAnimation = true }: HeroProps) {
           variants={itemVariants}
           className="flex flex-wrap items-center gap-3 mb-8 md:mb-6"
         >
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-[hsl(220,100%,60%)]/20 bg-[hsl(220,100%,60%)]/5">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(220,100%,60%)] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[hsl(220,100%,60%)]" />
-            </span>
+          <div className="flex items-center gap-2 px-3 py-1 ">
             <p className="text-[hsl(220,100%,60%)] font-mono text-[10px] uppercase tracking-widest">
-              Available for Hire
+              Based In Varanasi
             </p>
           </div>
-          <p className="text-gray-500 font-mono text-[10px] uppercase tracking-widest">
-            Based in Varanasi
-          </p>
+
         </motion.div>
 
         {/* Title */}
@@ -131,7 +125,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
               <a href="https://docs.google.com/document/d/1mYTdEVDyZMmXxMx7vwNjd6SRd24S4fQJEQdFvcjez1E/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
                 <GlowButton label="RESUME" />
               </a>
-              <a href="https://github.com/Apurv7Gupta/" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/0xd34db8/" target="_blank" rel="noopener noreferrer">
                 <WhiteButton label="Source Code / GitHub" />
               </a>
             </div>
