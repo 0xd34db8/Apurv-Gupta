@@ -14,15 +14,15 @@ const CustomCursor: React.FC<CursorProps> = ({
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isLinkHover, setIsLinkHover] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isTouchDevice] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0)
+  );
 
   useEffect(() => {
-    // Check if the device has touch capabilities
-    const touchCheck = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(touchCheck);
-
     // If it's a touch device, don't attach mouse listeners
-    if (touchCheck) return;
+    if (isTouchDevice) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -58,8 +58,8 @@ const CustomCursor: React.FC<CursorProps> = ({
     <div
       style={{
         position: "fixed",
-        left: position.x - size / 2,
-        top: position.y - size / 2,
+        left: position.x,
+        top: position.y,
         width: size,
         height: size,
         pointerEvents: "none",
