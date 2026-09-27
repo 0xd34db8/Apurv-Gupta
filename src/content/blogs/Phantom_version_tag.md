@@ -36,54 +36,54 @@ for file_info in pe.FileInfo[0]:
 
 The output was undeniable:
 
-- `FileVersion: 3.2.10.82`
-- `ProductVersion: 3.2.10.82`
-- `Assembly Version: 3.2.10.82`
+* `FileVersion: 3.2.10.82`
+* `ProductVersion: 3.2.10.82`
+* `Assembly Version: 3.2.10.82`
 
 The binary inside the `3.2.9.82` release was undeniably built from `3.2.10.82` source code.
 
 ## Step 2: Git Archaeology
 
-Next, I needed to find out _why_ the automated build (or manual upload) grabbed the wrong version. I cloned the repository and started digging into the Git history to find the true source code for `3.2.9.82`.
+Next, I needed to find out *why* the automated build (or manual upload) grabbed the wrong version. I cloned the repository and started digging into the Git history to find the true source code for `3.2.9.82`.
 
 First, I checked what commit the `3.2.9.82` tag was pointing to:
 
 ```bash
 git rev-list -n 1 3.2.9.82
+
 ```
 
-This pointed me to commit `39ce4cd3`. But when I inspected the `AssemblyInfo.cs` file at that exact commit:
+This pointed me to commit `39ce4cd3`. But when I inspected the `AssemblyInfo.cs` file at that exact commit, the file clearly read `[assembly: AssemblyVersion("3.2.10.82")]`. The tag itself was placed on the wrong codebase!
 
-```bash
-git show 3.2.9.82:x360ce.App/Properties/AssemblyInfo.cs
-```
-
-The file clearly read `[assembly: AssemblyVersion("3.2.10.82")]`. The tag itself was placed on the wrong codebase!
-
-So, where was the _real_ `3.2.9.82`? I decided to search the entire repository history across all branches for any modification of the `AssemblyInfo.cs` file that included that version number:
+So, where was the *real* `3.2.9.82`? I decided to search the entire repository history across all branches for any modification of the `AssemblyInfo.cs` file that included that version number:
 
 ```bash
 git log --all --oneline -S "3.2.10.82" -- "**/AssemblyInfo.cs"
+
 ```
 
-This led me to commit `cca9b089`, explicitly labeled `v3.2.10.82 (2015-10-20)`.
-
-I then checked the commit immediately preceding it (`cca9b089~1`), which was commit `da5b2601`. When I checked the `AssemblyInfo.cs` file for _that_ commit, I found my plot twist:
+This led me to commit `cca9b089`, explicitly labeled `v3.2.10.82 (2015-10-20)`. I then checked the commit immediately preceding it (`cca9b089~1`), which was commit `da5b2601`. When I checked the `AssemblyInfo.cs` file for *that* commit, I found my plot twist:
 
 ```csharp
 [assembly: AssemblyVersion("3.2.8.77")]
+
 ```
 
-**The project's versioning jumped directly from `3.2.8.77` to `3.2.10.82`. Version `3.2.9.82` never actually existed in the source code!**
+**The project's versioning jumped directly from `3.2.8.77` to `3.2.10.82`.**
 
-When the maintainer attempted to create the "Re-Release", they mistakenly named it `3.2.9.82`. Because that version didn't exist in the commit tree, the tag was accidentally placed on the `3.2.10.82` codebase, defeating the entire purpose of the legacy release.
+It turned out that version `3.2.9.82` wasn't entirely fictional—its commits had been lost during a past Git database incident. When the maintainer attempted to create the "Re-Release", the system defaulted to bundling the `3.2.10.82` codebase for that tag, defeating the entire purpose of the legacy release.
 
-## Step 3: The Fix
+## Step 3: The Fix (and the Plot Twist)
 
-Fixing this required a two-pronged approach, due to a quirk in how GitHub works: Pull Requests cannot modify GitHub Releases or replace attached `.zip` files.
+I originally opened PR #1632 to update the `README.md` to point to the actual last-known-good legacy version (`3.2.8.77`) and left my findings on the issue tracker.
 
 1.  **The Code/Docs PR:** I created a new branch and searched the repository for mentions of the phantom `3.2.9.82` version. I updated the `README.md` to point to the actual last-known-good legacy version, `3.2.8.77`, and opened PR #1632.
 2.  **The Release Instructions:** I documented all of my Git findings directly on Issue #1522. I provided the maintainers with the exact commit SHA (`da5b2601`) that represents the true pre-crash codebase, instructing them to rename the release to `3.2.8.77` and recompile the `.zip` assets from that specific commit.
+
+
+However, the story didn't end there. My PE header diagnosis gave the maintainers exactly what they needed to understand *why* users were crashing. Version `3.2.10.82` had introduced a fixed-size buffer for controller device IDs, which overflowed on newer Windows 11 machines.
+
+Instead of just rolling back the documentation to 2015, the maintainer used my findings to push a brand new update to the legacy line (`v3.4.39.0`) that dynamically handles device lists and fixes the crash entirely. They closed my PR without merging, but explicitly credited my reverse-engineering for settling the confusion and diagnosing the root cause.
 
 ## Takeaways
 
