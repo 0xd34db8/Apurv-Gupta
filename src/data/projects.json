@@ -2,7 +2,7 @@
   {
     "Name": "InvigilAI",
     "desc": "Deep-Learning Based Proctoring System",
-    "link": "https://github.com/Apurv7Gupta/InvigilAI/",
+    "link": "https://github.com/0xd34db8/InvigilAI/",
     "link_name": "Github",
     "tech": "YOLO • PANNs • MediaPipe • VGG2 • FaceNet • Docker",
     "images": [
@@ -14,19 +14,16 @@
     ]
   },
   {
-    "Name": "DiagneX",
-    "desc": "GenAI based medical website",
-    "link": "https://github.com/Apurv7Gupta/Diagnex",
+    "Name": "NVM: OnTheFly!",
+    "desc": "A Natively Hooked GUI for managing NVM environments",
+    "link": "https://github.com/0xd34db8/NVM-OnTheFly/",
     "link_name": "Github",
-    "tech": "Flask • RandomForest • Gemini • Multer • React",
+    "tech": "Electron • React • TypeScript • Tailwind CSS",
     "images": [
-      "Projects/DiagneX/1.png",
-      "Projects/DiagneX/2.png",
-      "https://github.com/Apurv7Gupta/Diagnex/blob/main/public/DiagneX.png?raw=true",
-      "Projects/DiagneX/3.png",
-      "Projects/DiagneX/4.png",
-      "Projects/DiagneX/5.png",
-      "Projects/DiagneX/6.png"
+      "Projects/OTF/OTF_Version Manager.png",
+      "Projects/OTF/OTF_Download.png",
+      "Projects/OTF/OTF_Console.png",
+      "Projects/OTF/OTF_Settings.png"
     ]
   },
   {

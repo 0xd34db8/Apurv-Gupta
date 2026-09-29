@@ -53,7 +53,7 @@ A bespoke loading sequence featuring a hardware-accelerated video mask.
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/Apurv7Gupta/Apurv-Gupta-Portfolio_Prototype.git
+git clone https://github.com/0xd34db8/Apurv-Gupta-Portfolio_Prototype.git
 
 ```
 
