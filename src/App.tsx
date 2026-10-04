@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/set-state-in-effect */
+ 
 import { useState, useEffect } from "react";
 import "./App.css";
 import Curtain from "./components/ui/Curtain";
@@ -27,7 +27,6 @@ export default function App() {
   const [isLandingPage, setIsLandingPage] = useState(false);
   const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
 
-  const [hash, setHash] = useState(window.location.hash);
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -47,35 +46,43 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    const handleLocationChange = () => {
+      const currentHash = window.location.hash;
+      const path = window.location.pathname;
+
+      // Check if it's a blog route
+      if (path.startsWith("/blog/")) {
+        setActiveBlogId(path.replace("/blog/", ""));
+        setShowIntro(false);
+        setIntroFinished(true);
+        setIsLandingPage(false);
+      } else {
+        setActiveBlogId(null);
+        const fullPath = path + currentHash;
+        if (
+          fullPath === "/" ||
+          (path === "/index.html" && (!currentHash || currentHash === "#home"))
+        ) {
+          setIsLandingPage(true);
+        } else {
+          setShowIntro(false);
+          setIntroFinished(true);
+          setIsLandingPage(false);
+        }
+      }
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("hashchange", handleLocationChange);
+    
+    // Initial check
+    handleLocationChange();
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("hashchange", handleLocationChange);
+    };
   }, []);
-
-  useEffect(() => {
-    const path = window.location.pathname + hash;
-
-    // Check if it's a blog route
-    if (hash.startsWith("#blog/")) {
-      setActiveBlogId(hash.replace("#blog/", ""));
-      setShowIntro(false);
-      setIntroFinished(true);
-      setIsLandingPage(false);
-      return;
-    } else {
-      setActiveBlogId(null);
-    }
-
-    if (
-      path === "/" ||
-      (path === "/index.html" && (!hash || hash === "#home"))
-    ) {
-      setIsLandingPage(true);
-    } else {
-      setShowIntro(false);
-      setIntroFinished(true);
-    }
-  }, [hash]);
 
   useEffect(() => {
     document.body.style.overflow =
@@ -115,7 +122,12 @@ export default function App() {
             <BlogPost
               blogId={activeBlogId}
               onBack={() => {
-                window.location.hash = "#blogs";
+                window.history.pushState({}, '', '/#blogs');
+                window.dispatchEvent(new Event('popstate'));
+                setTimeout(() => {
+                  const el = document.getElementById('blogs');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
               }}
             />
           ) : (

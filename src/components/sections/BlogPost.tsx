@@ -34,16 +34,79 @@ export default function BlogPost({ blogId, onBack }: { blogId: string; onBack: (
       return;
     }
 
+    const metaTagsToRemove: Element[] = [];
+
     blogFiles[matchingKey]()
       .then((raw) => {
-        const { body: content } = fm(raw as string);
+        const { attributes, body: content } = fm(raw as string) as { attributes: Record<string, string>, body: string };
         setBody(content);
         setLoading(false);
+
+        // --- SEO BOOSTING ---
+        if (attributes.title) {
+          document.title = `${attributes.title} | Apurv Gupta`;
+        }
+
+        const addOrUpdateMeta = (name: string, content: string, isProperty = false) => {
+          const selector = isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+          let meta = document.querySelector(selector);
+          if (!meta) {
+            meta = document.createElement('meta');
+            if (isProperty) meta.setAttribute('property', name);
+            else meta.setAttribute('name', name);
+            document.head.appendChild(meta);
+            metaTagsToRemove.push(meta);
+          } else {
+            // Keep track so we don't accidentally remove pre-existing ones?
+            // Actually it's fine to just update them.
+            // But we will restore defaults later if needed.
+          }
+          meta.setAttribute('content', content);
+        };
+
+        if (attributes.description) {
+          addOrUpdateMeta('description', attributes.description);
+          addOrUpdateMeta('og:description', attributes.description, true);
+        }
+        if (attributes.title) {
+          addOrUpdateMeta('og:title', attributes.title, true);
+          addOrUpdateMeta('og:type', 'article', true);
+        }
+
+        let scriptSchema = document.querySelector('#seo-schema');
+        if (!scriptSchema) {
+          scriptSchema = document.createElement('script');
+          scriptSchema.id = 'seo-schema';
+          scriptSchema.setAttribute('type', 'application/ld+json');
+          document.head.appendChild(scriptSchema);
+          metaTagsToRemove.push(scriptSchema);
+        }
+        
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": attributes.title,
+          "description": attributes.description,
+          "datePublished": attributes.date ? new Date(attributes.date).toISOString() : new Date().toISOString(),
+          "author": {
+            "@type": "Person",
+            "name": "Apurv Gupta"
+          }
+        };
+        scriptSchema.textContent = JSON.stringify(schema);
+        // --- END SEO BOOSTING ---
       })
       .catch(() => {
         setBody("# Error\nFailed to load the blog post.");
         setLoading(false);
       });
+
+    return () => {
+      // Cleanup dynamically added tags
+      metaTagsToRemove.forEach(tag => tag.remove());
+      // Reset title
+      document.title = "Apurv Gupta";
+    };
   }, [blogId]);
 
   return (

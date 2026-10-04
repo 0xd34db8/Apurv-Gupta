@@ -95,9 +95,13 @@ export default function Blogs() {
         <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 snap-x snap-mandatory no-scrollbar">
           {blogs.map((blog, i) => (
             <motion.a
-              href={`#blog/${blog.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/blog/${blog.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', `/blog/${blog.slug}`);
+                window.dispatchEvent(new Event('popstate'));
+                window.scrollTo(0, 0);
+              }}
               key={blog.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
