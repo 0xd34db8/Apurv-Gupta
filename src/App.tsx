@@ -134,8 +134,8 @@ export default function App() {
             <main className="min-h-screen w-full bg-[#0a0d12] text-white selection:bg-[#3b82f6] selection:text-white">
               <Navbar />
               <Hero startAnimation={!isLandingPage || introFinished} />
-              <Skills />
               <WorkExperience />
+              <Skills />
               <Works />
               <Blogs />
 

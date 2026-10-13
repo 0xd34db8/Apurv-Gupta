@@ -24,32 +24,61 @@ const CustomCursor: React.FC<CursorProps> = ({
     // If it's a touch device, don't attach mouse listeners
     if (isTouchDevice) return;
 
+    const checkInteractive = (target: EventTarget | null) => {
+      if (!target || !(target instanceof Element)) return false;
+      return Boolean(
+        target.closest(
+          "a, button, [role='button'], .cursor-pointer, input[type='button'], input[type='submit']"
+        )
+      );
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
+      setIsLinkHover(checkInteractive(e.target));
     };
 
     const handleMouseOver = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("a, button") !== null) {
-        setIsLinkHover(true);
-      }
+      setIsLinkHover(checkInteractive(e.target));
     };
+
     const handleMouseOut = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("a, button") !== null) {
-        setIsLinkHover(false);
-      }
+      const related = e.relatedTarget as Element | null;
+      setIsLinkHover(checkInteractive(related));
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      const recheck = () => {
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        setIsLinkHover(checkInteractive(el));
+      };
+      requestAnimationFrame(recheck);
+      setTimeout(recheck, 50);
+      setTimeout(recheck, 150);
+    };
+
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+      setIsLinkHover(false);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseover", handleMouseOver);
     window.addEventListener("mouseout", handleMouseOut);
+    window.addEventListener("click", handleClick);
+    window.addEventListener("pointerup", handleClick);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
+      window.removeEventListener("click", handleClick);
+      window.removeEventListener("pointerup", handleClick);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [isVisible]);
+  }, [isTouchDevice]);
 
   // If it's a touch device, return null so no div is rendered
   if (isTouchDevice) return null;

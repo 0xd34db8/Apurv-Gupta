@@ -35,7 +35,7 @@ export default function Navbar() {
         
         {/* Desktop Links */}
         <div className="hidden md:flex gap-8 text-xs font-medium uppercase tracking-[0.2em]">
-          {["work", "experience", "skills", "blogs", "contact"].map((section) => (
+          {["experience", "skills", "work", "blogs", "contact"].map((section) => (
             <a
               key={section}
               href={`#${section}`}
@@ -80,7 +80,7 @@ export default function Navbar() {
               <X size={32} />
             </button>
             <div className="flex flex-col gap-8 text-2xl font-medium uppercase tracking-[0.2em] text-center">
-              {["work", "experience", "skills", "blogs", "contact"].map((section) => (
+              {["experience", "skills", "work", "blogs", "contact"].map((section) => (
                 <a
                   key={section}
                   href={`#${section}`}

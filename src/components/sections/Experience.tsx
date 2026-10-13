@@ -97,7 +97,7 @@ export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 bg-[#090b0e] overflow-hidden"
+      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -118,14 +118,14 @@ export default function WorkExperience() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 60%, #090b0e 100%)",
+            "radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 60%, #0a0d12 100%)",
         }}
       />
 
       <div
         className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10"
         style={{
-          background: "linear-gradient(to bottom, #090b0e 0%, transparent 100%)",
+          background: "linear-gradient(to bottom, #0a0d12 0%, transparent 100%)",
         }}
       />
 
@@ -137,7 +137,7 @@ export default function WorkExperience() {
           transition={{ duration: 1.5 }}
           src={WIREFRAME}
           alt="Wireframe"
-          className="w-full max-w-5xl object-contain brightness-150 contrast-125 md:pl-12 md:pt-70 pt-35"
+          className="w-full max-w-5xl object-contain brightness-150 contrast-125 md:pl-12 md:pt-48 pt-20"
         />
       </div>
 
