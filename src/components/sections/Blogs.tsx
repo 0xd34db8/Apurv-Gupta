@@ -96,12 +96,8 @@ export default function Blogs() {
           {blogs.map((blog, i) => (
             <motion.a
               href={`/blog/${blog.slug}`}
-              onClick={(e) => {
-                e.preventDefault();
-                window.history.pushState({}, '', `/blog/${blog.slug}`);
-                window.dispatchEvent(new Event('popstate'));
-                window.scrollTo(0, 0);
-              }}
+              target="_blank"
+              rel="noopener noreferrer"
               key={blog.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +107,12 @@ export default function Blogs() {
             >
               <div className="absolute inset-0 bg-blue-500/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
               <div className="relative h-full bg-[#050a15] rounded-2xl p-8 flex flex-col gap-4 z-10">
-                <p className="font-mono text-xs text-blue-400">{blog.date}</p>
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-xs text-blue-400">{blog.date}</p>
+                  <span className="text-gray-400 text-sm group-hover:text-blue-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">
+                    ↗
+                  </span>
+                </div>
                 <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
                   {blog.title}
                 </h3>
