@@ -10,16 +10,25 @@ export interface ProjectExperience {
   images?: string[];
 }
 
+const cardVariants = {
+  hidden: { opacity: 0, filter: "brightness(0.2) blur(4px)" },
+  visible: {
+    opacity: 1,
+    filter: "brightness(1) blur(0px)",
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 export function DesktopProjectCard({ exp, index }: { exp: ProjectExperience; index: number }) {
   const [activeImg, setActiveImg] = useState(0);
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ type: "spring", bounce: 0.4, duration: 0.8 }}
-      className={`hidden xl:flex group border-b border-white/5 py-12 md:py-20 flex-col gap-12 xl:gap-16 hover:bg-blue-500/[0.01] transition-all duration-500 items-center ${index % 2 === 0 ? "xl:flex-row" : "xl:flex-row-reverse"}`}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      className={`hidden xl:flex group border-b border-white/5 py-12 md:py-20 flex-col gap-12 xl:gap-16 hover:bg-blue-500/[0.01] transition-colors duration-500 items-center ${index % 2 === 0 ? "xl:flex-row" : "xl:flex-row-reverse"}`}
     >
       {/* Left/Right Text Column */}
       <div className="w-full xl:w-1/3 flex flex-col gap-6">
@@ -131,7 +140,13 @@ export function DesktopProjectCard({ exp, index }: { exp: ProjectExperience; ind
 
 export function MobileProjectCard({ exp, index }: { exp: ProjectExperience; index: number }) {
   return (
-    <div className="xl:hidden group border-b border-white/5 py-8 sm:py-12 flex flex-col gap-4 hover:bg-blue-500/[0.01] transition-all duration-500">
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      className="xl:hidden group border-b border-white/5 py-8 sm:py-12 flex flex-col gap-4 hover:bg-blue-500/[0.01] transition-colors duration-500"
+    >
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
         <div className="max-w-full">
           <h3 className="text-3xl sm:text-4xl md:text-6xl font-medium flex flex-wrap relative group-hover:text-white transition-all duration-300 group-hover:[text-shadow:0_0_25px_rgba(0,102,255,0.6)]">
@@ -205,6 +220,6 @@ export function MobileProjectCard({ exp, index }: { exp: ProjectExperience; inde
           ))}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
