@@ -30,7 +30,7 @@
 }
 
 @media (pointer: fine) {
-  body {
+  html.custom-cursor-active body {
     cursor: none;
   }
 }
@@ -39,14 +39,37 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
-body,
-a,
-div,
-li,
-button,
-span {
+/* Custom Cursor Active: Hide native cursor so floating PNG cursor displays */
+html.custom-cursor-active,
+html.custom-cursor-active body,
+html.custom-cursor-active a,
+html.custom-cursor-active div,
+html.custom-cursor-active li,
+html.custom-cursor-active button,
+html.custom-cursor-active span,
+html.custom-cursor-active input,
+html.custom-cursor-active textarea {
   cursor: none !important;
+}
+
+/* Fallback to Native CUR files when custom PNG cursor does not render or fails */
+html.native-cursor-fallback,
+html.native-cursor-fallback body,
+html.native-cursor-fallback * {
+  cursor:
+    url("/Cursor/normal.cur") 5 2,
+    auto !important;
+}
+
+html.native-cursor-fallback a,
+html.native-cursor-fallback button,
+html.native-cursor-fallback [role="button"],
+html.native-cursor-fallback .cursor-pointer,
+html.native-cursor-fallback input[type="button"],
+html.native-cursor-fallback input[type="submit"] {
+  cursor:
+    url("/Cursor/link.cur") 5 2,
+    pointer !important;
 }
 
 @layer utilities {
@@ -59,19 +82,6 @@ span {
     scrollbar-width: none;
   }
 }
-
-/* body {
-  cursor:
-    url("/Cursor/normal.cur") 16 16,
-    auto;
-}
-
-a,
-button {
-  cursor:
-    url("/Cursor/link.cur") 16 16,
-    pointer;
-} */
 
 @custom-variant dark (&:is(.dark *));
 

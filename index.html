@@ -33,6 +33,19 @@
     content="Portfolio of Apurv Gupta, an AI Engineer and Full-Stack Developer specializing in Agentic AI systems and Modern Web Applications." />
   <meta name="twitter:image" content="https://apurv-gupta.vercel.app/Footer_LOGO.png" />
   <meta name="twitter:creator" content="@Apurv7Gupta" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("cursor_mode") === "fallback") {
+          document.documentElement.classList.add("native-cursor-fallback");
+        } else {
+          document.documentElement.classList.add("custom-cursor-active");
+        }
+      } catch (e) {
+        document.documentElement.classList.add("custom-cursor-active");
+      }
+    })();
+  </script>
 </head>
 
 <body>

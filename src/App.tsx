@@ -20,6 +20,8 @@ import LocomotiveScroll from "locomotive-scroll";
 
 import CursorImgNormal from "./assets/Cursor/normal.png";
 import CursorImgLink from "./assets/Cursor/link.png";
+import CursorCurNormal from "./assets/Cursor/normal.cur";
+import CursorCurLink from "./assets/Cursor/link.cur";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -116,6 +118,8 @@ export default function App() {
           <Cursor
             normalCursor={CursorImgNormal}
             linkCursor={CursorImgLink}
+            normalCur={CursorCurNormal}
+            linkCur={CursorCurLink}
             size={25}
           />
           {activeBlogId ? (
