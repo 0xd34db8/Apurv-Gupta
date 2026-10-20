@@ -13,7 +13,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
+      className="relative py-20 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"

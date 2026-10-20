@@ -41,11 +41,10 @@ To maintain visual cohesion, rhythm, and responsive consistency across all secti
 ## 1. Section Spacing & Sizing
 Every top-level `<section>` on the landing page must follow the standard responsive padding pattern:
 
-- **Vertical Padding:** `py-12 sm:py-16 md:py-24`
-  - Mobile (`< 640px`): `py-12` (48px top and bottom; ensures 96px combined gap between adjacent sections).
-  - Tablet (`640px - 767px`): `sm:py-16` (64px top and bottom).
-  - Desktop (`>= 768px`): `md:py-24` (96px top and bottom).
-  - *Avoid:* Hardcoding non-standard top/bottom padding (e.g. `pt-30`, `py-32`) or omitting mobile padding (`lg:py-24` without mobile `py-12`).
+- **Vertical Padding:** `py-20 md:py-24`
+  - Mobile (`< 768px`): `py-20` (80px top and bottom; provides a spacious, comfortable 160px combined gap between adjacent sections, preventing cramped layouts on tall mobile viewports).
+  - Desktop / Tablet Landscape (`>= 768px`): `md:py-24` (96px top and bottom; 192px combined gap).
+  - *Avoid:* Compressing mobile padding below `py-20` (e.g. `py-12` or `py-16` which feels cramped/non-existent on mobile devices) or omitting base mobile padding (`md:py-24` without `py-20`).
 - **Horizontal Padding:** `px-4 sm:px-6 md:px-16`
   - Mobile: `px-4` (16px gutter).
   - Tablet: `sm:px-6` (24px gutter).

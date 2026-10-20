@@ -146,7 +146,7 @@ export default function App() {
               <Philosophy />
 
               <div className="w-full bg-[#050a15]">
-                <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-16 pb-12 sm:pb-16 md:pb-24">
+                <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-16 pb-20 md:pb-24">
                   <div className="flex flex-wrap lg:flex-nowrap items-bottom justify-center gap-8">
                     <ShowcaseCard
                       tag="Current Status"

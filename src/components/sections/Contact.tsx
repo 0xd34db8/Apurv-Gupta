@@ -24,7 +24,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col justify-between py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden bg-[#050a15] text-white"
+      className="min-h-screen flex flex-col justify-between py-20 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden bg-[#050a15] text-white"
     >
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:gap-12">
