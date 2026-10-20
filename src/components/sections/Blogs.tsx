@@ -109,7 +109,7 @@ export default function Blogs() {
           />
         </h2>
 
-        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 snap-x snap-mandatory no-scrollbar touch-pan-x">
+        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 snap-x snap-mandatory no-scrollbar">
           {blogs.map((blog, i) => (
             <motion.a
               href={`/blog/${blog.slug}`}
@@ -120,7 +120,7 @@ export default function Blogs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="w-[85vw] sm:w-[350px] md:w-auto flex-shrink-0 md:flex-shrink snap-center group relative p-6 sm:p-8 rounded-2xl bg-transparent sm:bg-[#0d1117]/60 sm:backdrop-blur-md group-hover:bg-transparent group-hover:backdrop-blur-none border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] flex flex-col justify-between"
+              className="w-[85vw] sm:w-[350px] md:w-auto flex-shrink-0 md:flex-shrink snap-center group relative p-6 sm:p-8 rounded-2xl bg-transparent sm:bg-white/[0.01] sm:hover:bg-white/[0.03] border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] flex flex-col justify-between"
             >
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
