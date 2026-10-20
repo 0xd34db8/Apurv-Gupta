@@ -1,4 +1,4 @@
- 
+
 import { useState, useEffect } from "react";
 import "./App.css";
 import Curtain from "./components/ui/Curtain";
@@ -76,7 +76,7 @@ export default function App() {
 
     window.addEventListener("popstate", handleLocationChange);
     window.addEventListener("hashchange", handleLocationChange);
-    
+
     // Initial check
     handleLocationChange();
 

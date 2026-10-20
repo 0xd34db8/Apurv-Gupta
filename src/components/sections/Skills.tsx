@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StreakBurst from "../ui/StreakBurst";
-import Spider from "../../assets/Spider.png";
+import Spider from "../../assets/Wireframes/Spider.png";
+import WireframeOverlay from "../ui/WireframeOverlay";
 import skills from "../../data/skills.json";
 import SkillGroup from "../ui/SkillGroup";
 
@@ -38,28 +39,31 @@ export default function Skills() {
       />
 
       <div
+        className="absolute inset-x-0 top-0 h-40 md:h-52 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to bottom, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
+        }}
+      />
+
+      <div
         className="absolute inset-x-0 bottom-0 h-52 pointer-events-none z-10"
         style={{
           background: "linear-gradient(to top, #090b0e 0%, #090b0e 20%, transparent 100%)",
         }}
       />
 
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <motion.img
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.35 }}
-          transition={{ duration: 1.5 }}
-          src={Spider}
-          alt="Spider"
-          className="w-full max-w-5xl object-contain brightness-75 contrast-125 md:pl-9 md:pt-9 pt-35 h-full"
-        />
-      </div>
+      {/* SPIDER OVERLAY */}
+      <WireframeOverlay
+        src={Spider}
+        alt="Spider"
+        className="md:pl-9 md:pt-9 pt-35"
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
           <div className="max-w-2xl">
             <h3 className="text-sm font-mono text-gray-500 uppercase mb-4 tracking-widest flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
+
               / Tech Stack
             </h3>
             <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline">
@@ -81,11 +85,10 @@ export default function Skills() {
               <button
                 key={i}
                 onClick={() => setActiveTab(i)}
-                className={`relative px-5 py-2.5 rounded-full border text-[11px] font-mono transition-all uppercase tracking-wider whitespace-nowrap snap-start flex-shrink-0 ${
-                  activeTab === i
-                    ? "border-blue-500 text-white"
-                    : "bg-white/5 border-white/10 text-gray-500"
-                }`}
+                className={`relative px-5 py-2.5 rounded-full border text-[11px] font-mono transition-all uppercase tracking-wider whitespace-nowrap snap-start flex-shrink-0 ${activeTab === i
+                  ? "border-blue-500 text-white"
+                  : "bg-white/5 border-white/10 text-gray-500"
+                  }`}
               >
                 {activeTab === i && (
                   <motion.div

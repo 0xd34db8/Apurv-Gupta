@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import StreakBurst from "../ui/StreakBurst";
 import { motion } from "framer-motion";
+import F22 from "../../assets/Wireframes/F22.png";
+import WireframeOverlay from "../ui/WireframeOverlay";
 import fm from "front-matter";
 
 interface BlogMeta {
@@ -72,6 +74,13 @@ export default function Blogs() {
         }}
       />
 
+      {/* F22 WIREFRAME OVERLAY */}
+      <WireframeOverlay
+        src={F22}
+        alt="F-22 Raptor"
+        className="md:pt-10 pt-20"
+      />
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
@@ -80,7 +89,7 @@ export default function Blogs() {
           transition={{ duration: 0.5 }}
           className="text-xs sm:text-sm font-mono text-gray-500 uppercase mb-12 sm:mb-10 flex items-center gap-2"
         >
-          <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
+
           / Thoughts & Insights
         </motion.h3>
 
@@ -92,7 +101,7 @@ export default function Blogs() {
           />
         </h2>
 
-        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 snap-x snap-mandatory no-scrollbar">
+        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 snap-x snap-mandatory no-scrollbar touch-pan-x">
           {blogs.map((blog, i) => (
             <motion.a
               href={`/blog/${blog.slug}`}
@@ -103,10 +112,12 @@ export default function Blogs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center group block relative p-[1px] overflow-hidden rounded-2xl bg-gradient-to-b from-white/10 to-white/5 hover:from-blue-500/50 hover:to-blue-600/20 transition-all duration-500"
+              className="w-[85vw] sm:w-[350px] md:w-auto flex-shrink-0 md:flex-shrink snap-center group relative p-6 sm:p-8 rounded-2xl bg-transparent sm:bg-[#0d1117]/60 sm:backdrop-blur-md group-hover:bg-transparent group-hover:backdrop-blur-none border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] flex flex-col justify-between"
             >
-              <div className="absolute inset-0 bg-blue-500/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-              <div className="relative h-full bg-[#050a15] rounded-2xl p-8 flex flex-col gap-4 z-10">
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col gap-4 h-full">
                 <div className="flex items-center justify-between">
                   <p className="font-mono text-xs text-blue-400">{blog.date}</p>
                   <span className="text-gray-400 text-sm group-hover:text-blue-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">

@@ -4,7 +4,8 @@ import experienceData from "../../data/experience.json";
 import TextType from "../ui/TextType";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import WIREFRAME from "../../assets/Wireframe.png";
+import Character from "../../assets/Wireframes/Character.png";
+import WireframeOverlay from "../ui/WireframeOverlay";
 
 interface ExperienceProps {
   exp: {
@@ -97,7 +98,7 @@ export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 bg-[#0a0d12] overflow-hidden"
+      className="relative lg:py-24 sm:pt-20 px-4 pt-30 sm:px-6 md:px-16 pb-20 md:pb-24 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -129,17 +130,20 @@ export default function WorkExperience() {
         }}
       />
 
+      <div
+        className="absolute inset-x-0 bottom-0 h-40 md:h-52 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to top, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
+        }}
+      />
+
       {/* CHARACTER OVERLAY */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <motion.img
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.35 }}
-          transition={{ duration: 1.5 }}
-          src={WIREFRAME}
-          alt="Wireframe"
-          className="w-full max-w-5xl object-contain brightness-150 contrast-125 md:pl-12 md:pt-48 pt-20"
-        />
-      </div>
+      <WireframeOverlay
+        src={Character}
+        alt="Character"
+        className="md:pl-12 md:pt-48 pt-20"
+        large
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h3
@@ -149,7 +153,6 @@ export default function WorkExperience() {
           transition={{ duration: 0.5 }}
           className="text-sm font-mono text-gray-500 uppercase mb-4 sm:mb-4 flex items-center gap-2"
         >
-          <span className="w-2 h-2 bg-blue-600 animate-pulse rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
           / Professional Journey
         </motion.h3>
 
