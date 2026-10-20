@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Portrait from "../../assets/Portrait.png";
 
 export default function Motto() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,14 +39,25 @@ export default function Motto() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mb-10"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-12 sm:mb-14"
           >
-            <div className="relative w-16 h-16">
-              <div className="absolute inset-0 border border-[hsl(220,100%,60%)] rotate-45 animate-[spin_10s_linear_infinite]" />
-              <div className="absolute inset-2 border border-white/20 -rotate-45" />
-              <div className="absolute inset-0 flex items-center justify-center font-mono text-xl font-bold text-white">
-                AG
+            <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-44 md:h-44 group">
+              {/* Ambient radial blur glow */}
+              <div className="absolute -inset-4 sm:-inset-6 rounded-full bg-gradient-to-tr from-blue-600/30 via-blue-400/20 to-transparent blur-2xl pointer-events-none animate-pulse" />
+
+              {/* Circular portrait container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden shadow-[0_0_35px_rgba(59,130,246,0.25)] group-hover:shadow-[0_0_50px_rgba(59,130,246,0.45)] transition-all duration-500 bg-[#050a15]">
+                <img
+                  src={Portrait}
+                  alt="Apurv Gupta"
+                  className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
+
+              {/* Outer orbital ring snapping to image border */}
+              <div className="absolute inset-0 rounded-full border border-white/30 group-hover:border-blue-500/50 animate-[spin_28s_linear_infinite_reverse] pointer-events-none transition-colors duration-500" />
             </div>
           </motion.div>
 
