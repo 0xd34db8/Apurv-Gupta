@@ -60,7 +60,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
       initial="hidden"
       animate={startAnimation ? "visible" : "hidden"}
       variants={containerVariants}
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-16 overflow-hidden"
     >
       {/* Background glow */}
       <motion.div

@@ -6,7 +6,7 @@ export default function Works() {
   return (
     <section
       id="work"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 bg-[#090b0e] overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#090b0e] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -36,7 +36,7 @@ export default function Works() {
           / Selected Projects
         </h3>
 
-        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-5 sm:mb-20">
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline mb-8 sm:mb-20">
           <StreakBurst
             text="Works"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white"

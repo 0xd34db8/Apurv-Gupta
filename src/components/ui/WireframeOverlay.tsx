@@ -20,7 +20,7 @@ export default function WireframeOverlay({
   if (large) {
     return (
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <div className="relative w-full max-w-5xl flex items-center justify-center">
+        <div className="relative w-[85%] sm:w-[90%] max-w-4xl flex items-center justify-center">
           <img
             src={src}
             alt=""

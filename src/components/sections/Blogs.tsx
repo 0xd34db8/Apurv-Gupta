@@ -49,7 +49,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 md:pb-24 bg-[#090b0e] overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#090b0e] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -76,7 +76,7 @@ export default function Blogs() {
 
       {/* BOTTOM FADE */}
       <div
-        className="absolute inset-x-0 bottom-0 h-40 md:h-52 pointer-events-none z-10"
+        className="absolute inset-x-0 bottom-0 h-28 md:h-40 pointer-events-none z-10"
         style={{
           background: "linear-gradient(to top, #050a15 0%, #050a15 20%, transparent 100%)",
         }}
@@ -86,7 +86,7 @@ export default function Blogs() {
       <WireframeOverlay
         src={F22}
         alt="F-22 Raptor"
-        className="md:pt-10 pt-20"
+        className="md:pt-10 pt-10"
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -95,13 +95,13 @@ export default function Blogs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs sm:text-sm font-mono text-gray-500 uppercase mb-12 sm:mb-10 flex items-center gap-2"
+          className="text-xs sm:text-sm font-mono text-gray-500 uppercase mb-4 flex items-center gap-2"
         >
 
           / Thoughts & Insights
         </motion.h3>
 
-        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-12 sm:mb-20">
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-8 sm:mb-20">
           <StreakBurst
             text="Blogs"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2"

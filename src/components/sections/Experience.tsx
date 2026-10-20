@@ -110,7 +110,7 @@ export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative lg:py-24 sm:pt-20 px-4 pt-30 sm:px-6 md:px-16 md:pb-28 bg-[#0a0d12] overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -144,7 +144,7 @@ export default function WorkExperience() {
       />
 
       <div
-        className="absolute inset-x-0 bottom-0 h-40 md:h-52 pointer-events-none z-10"
+        className="absolute inset-x-0 bottom-0 h-28 md:h-40 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to top, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
@@ -155,7 +155,7 @@ export default function WorkExperience() {
       <WireframeOverlay
         src={Character}
         alt="Character"
-        className="md:pl-12 md:pt-48 pt-20 pb-12 md:pb-24"
+        className="md:pl-12 md:pt-48 pt-10 md:pb-24"
         large
       />
 
@@ -170,7 +170,7 @@ export default function WorkExperience() {
           / Professional Journey
         </motion.h3>
 
-        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-5 sm:mb-20">
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-8 sm:mb-20">
           <StreakBurst
             text="Experience"
             className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2"
@@ -178,7 +178,7 @@ export default function WorkExperience() {
           />
         </h2>
 
-        <div className="relative border-l border-white/10 pl-6 sm:pl-10 ml-4 sm:ml-0 m-8 sm:mt-16">
+        <div className="relative border-l border-white/10 pl-6 sm:pl-10 ml-4 sm:ml-0 mt-8 sm:mt-16">
           {experienceData.map((exp, i) => (
             <ExperienceCard key={i} exp={exp} i={i} />
           ))}

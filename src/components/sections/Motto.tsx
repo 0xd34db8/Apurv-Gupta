@@ -15,7 +15,7 @@ export default function Motto() {
   return (
     <section
       ref={containerRef}
-      className="relative pt-20 md:pt-40 pb-10  bg-[#050a15] overflow-hidden border-t border-white/0"
+      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#050a15] overflow-hidden border-t border-white/0"
     >
       <div className="absolute inset-0 flex flex-col justify-center gap-4 opacity-[0.02] pointer-events-none select-none">
         <motion.div
@@ -32,7 +32,7 @@ export default function Motto() {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

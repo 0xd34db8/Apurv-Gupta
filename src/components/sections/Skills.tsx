@@ -13,7 +13,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 md:py-32 px-6 md:px-16 bg-[#0a0d12] relative overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -39,14 +39,14 @@ export default function Skills() {
       />
 
       <div
-        className="absolute inset-x-0 top-0 h-40 md:h-52 pointer-events-none z-10"
+        className="absolute inset-x-0 top-0 h-28 md:h-40 pointer-events-none z-10"
         style={{
           background: "linear-gradient(to bottom, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
         }}
       />
 
       <div
-        className="absolute inset-x-0 bottom-0 h-52 pointer-events-none z-10"
+        className="absolute inset-x-0 bottom-0 h-28 md:h-40 pointer-events-none z-10"
         style={{
           background: "linear-gradient(to top, #090b0e 0%, #090b0e 20%, transparent 100%)",
         }}
@@ -56,11 +56,11 @@ export default function Skills() {
       <WireframeOverlay
         src={Spider}
         alt="Spider"
-        className="md:pl-9 md:pt-9 pt-35"
+        className="md:pl-9 md:pt-9 pt-10"
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 md:mb-20 gap-8">
           <div className="max-w-2xl">
             <h3 className="text-sm font-mono text-gray-500 uppercase mb-4 tracking-widest flex items-center gap-2">
 
