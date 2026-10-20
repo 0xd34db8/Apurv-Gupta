@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         <video
           ref={videoRef}
           src="/LOGO_old.webm"
-          className="md:ml-30 mb-20 md:mb-0  h-40 md:h-80 pointer-events-none z-0"
+          className="md:ml-30 mb-20 md:mb-0 h-32 sm:h-40 md:h-80 pointer-events-none z-0"
           muted
           playsInline
           preload="auto"

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Footer from "../layout/Footer";
 import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(false);
@@ -24,7 +25,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col justify-between py-20 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden bg-[#050a15] text-white"
+      className="md:min-h-screen flex flex-col justify-between py-20 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden bg-[#050a15] text-white"
     >
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:gap-12">
@@ -56,8 +57,8 @@ export default function Contact() {
 
           {/* Socials beside text */}
           <div className="flex flex-col gap-8 md:mb-60">
-            <div className="mt-10 md:mt-0">
-              <p className="text-gray-500 font-mono uppercase text-[10px] mb-6 tracking-widest">
+            <div className="mt-6 sm:mt-10 md:mt-0">
+              <p className="text-gray-500 font-mono uppercase text-[10px] mb-4 sm:mb-6 tracking-widest">
                 Socials
               </p>
 
@@ -113,16 +114,53 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-40 md:mt-0 grid grid-cols-2 gap-4">
+        <div className="mt-8 sm:mt-12 md:mt-0 grid grid-cols-2 gap-4 items-center min-h-[90px] sm:min-h-[120px] md:min-h-0">
           <div className="space-y-12"></div>
 
-          <div className="flex items-end justify-end">
-            <a href="#home">
-              <div className="mb-20 md:mb-0 w-24 h-24 md:w-40 md:h-40 bg-blue-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-500 group relative">
-                <span className="text-[10px] md:text-base font-bold text-center leading-tight">
-                  Back <br /> To <br /> Top ↑
+          <div className="flex items-center justify-end">
+            <a
+              href="#home"
+              aria-label="Back to top"
+              onClick={(e) => {
+                e.preventDefault();
+                // @ts-expect-error: window.locomotiveScroll is not typed
+                if (window.locomotiveScroll) window.locomotiveScroll.scrollTo("#home");
+                else document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#home");
+              }}
+              className="group relative"
+            >
+              <div
+                className="
+                  w-20 h-20 sm:w-24 sm:h-24 md:w-36 md:h-36
+                  rounded-full
+                  border border-blue-500/30 hover:border-blue-400/60
+                  bg-[hsl(220,100%,60%)]/5 hover:bg-[hsl(220,100%,60%)]/15
+                  backdrop-blur-md
+                  shadow-[0_0_20px_rgba(59,130,246,0.12)] hover:shadow-[0_0_35px_rgba(59,130,246,0.35)]
+                  flex flex-col items-center justify-center gap-1 md:gap-2
+                  cursor-pointer
+                  transition-all duration-500
+                  hover:scale-105 active:scale-95
+                  relative overflow-hidden
+                "
+              >
+                {/* Subtle sheen on hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Arrow Icon */}
+                <ArrowUp
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-6 md:h-6 text-blue-400 group-hover:text-white transition-all duration-300 group-hover:-translate-y-1"
+                  strokeWidth={2}
+                />
+
+                {/* Text */}
+                <span className="font-mono text-[8px] sm:text-[9px] md:text-xs uppercase tracking-[0.2em] text-gray-300 group-hover:text-white transition-colors duration-300 text-center leading-tight">
+                  Back <br /> To Top
                 </span>
-                <div className="absolute inset-0 rounded-full border border-blue-400 animate-ping opacity-20 hidden md:block" />
+
+                {/* Outer accent ring */}
+                <div className="absolute inset-0 rounded-full border border-blue-400/20 group-hover:border-blue-400/50 group-hover:scale-105 transition-all duration-500 pointer-events-none" />
               </div>
             </a>
           </div>
