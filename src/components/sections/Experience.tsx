@@ -110,7 +110,7 @@ export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative py-20 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
+      className="relative py-24 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -156,7 +156,7 @@ export default function WorkExperience() {
         src={Character}
         alt="Character"
         className="md:pl-12 md:pt-48 pt-10 md:pb-24"
-        large
+        custom
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -173,7 +173,7 @@ export default function WorkExperience() {
         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none pb-4 flex items-baseline mb-8 sm:mb-20">
           <StreakBurst
             text="Experience"
-            className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2"
+            className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2 pr-2.5 md:pr-4"
             delay={0.4}
           />
         </h2>

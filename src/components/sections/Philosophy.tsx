@@ -32,7 +32,7 @@ const Philosophy = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-[#050a15] text-white py-20 md:py-24 px-4 sm:px-6 md:px-16 overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[#050a15] text-white py-24 md:py-24 px-4 sm:px-6 md:px-16 overflow-hidden">
       {/* Top Horizontal Line - Animates from center out */}
       <motion.div
         initial="hidden"

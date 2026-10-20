@@ -4,23 +4,31 @@ interface WireframeOverlayProps {
   src: string;
   alt?: string;
   className?: string;
+  containerClassName?: string;
   color?: string;
   opacity?: number;
-  large?: boolean;
+  custom?: boolean;
+  size?: string;
+  large?: boolean; // Deprecated: use `custom` instead
 }
 
 export default function WireframeOverlay({
   src,
   alt = "Wireframe",
   className = "",
+  containerClassName = "",
   color = "#1313F5",
   opacity = 0.35,
+  custom = false,
+  size = "w-[85%] sm:w-[90%] max-w-4xl",
   large = false,
 }: WireframeOverlayProps) {
-  if (large) {
+  const isCustom = custom || large;
+
+  if (isCustom) {
     return (
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <div className="relative w-[85%] sm:w-[90%] max-w-4xl flex items-center justify-center">
+      <div className={`absolute inset-0 z-0 pointer-events-none flex items-center justify-center ${containerClassName}`}>
+        <div className={`relative ${size} flex items-center justify-center`}>
           <img
             src={src}
             alt=""
@@ -57,7 +65,7 @@ export default function WireframeOverlay({
   }
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+    <div className={`absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden ${containerClassName}`}>
       <div className={`w-full max-w-5xl h-full flex items-center justify-center ${className}`}>
         <motion.div
           role="img"

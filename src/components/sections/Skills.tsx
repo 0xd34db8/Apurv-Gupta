@@ -13,7 +13,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
+      className="relative py-24 md:py-24 px-4 sm:px-6 md:px-16 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -63,13 +63,12 @@ export default function Skills() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 md:mb-20 gap-8">
           <div className="max-w-2xl">
             <h3 className="text-sm font-mono text-gray-500 uppercase mb-4 tracking-widest flex items-center gap-2">
-
               / Tech Stack
             </h3>
             <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] flex items-baseline">
               <StreakBurst
                 text="Skillset"
-                className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white"
+                className="italic text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-white pb-2 pr-2.5 md:pr-4"
                 delay={0.4}
               />
             </h2>
