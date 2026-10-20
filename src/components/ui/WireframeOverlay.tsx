@@ -9,7 +9,6 @@ interface WireframeOverlayProps {
   opacity?: number;
   custom?: boolean;
   size?: string;
-  large?: boolean; // Deprecated: use `custom` instead
 }
 
 export default function WireframeOverlay({
@@ -21,11 +20,8 @@ export default function WireframeOverlay({
   opacity = 0.35,
   custom = false,
   size = "w-[85%] sm:w-[90%] max-w-4xl",
-  large = false,
 }: WireframeOverlayProps) {
-  const isCustom = custom || large;
-
-  if (isCustom) {
+  if (custom) {
     return (
       <div className={`absolute inset-0 z-0 pointer-events-none flex items-center justify-center ${containerClassName}`}>
         <div className={`relative ${size} flex items-center justify-center`}>

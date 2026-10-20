@@ -157,6 +157,7 @@ export default function WorkExperience() {
         alt="Character"
         className="md:pl-12 md:pt-48 pt-10 md:pb-24"
         custom
+        opacity={0.5}
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
