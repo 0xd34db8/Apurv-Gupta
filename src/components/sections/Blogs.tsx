@@ -49,7 +49,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 bg-[#090b0e] overflow-hidden"
+      className="relative lg:py-24 sm:pt-20 px-4 sm:px-6 md:px-16 pb-20 md:pb-24 bg-[#090b0e] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -71,6 +71,14 @@ export default function Blogs() {
         style={{
           background:
             "radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 60%, #090b0e 100%)",
+        }}
+      />
+
+      {/* BOTTOM FADE */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-40 md:h-52 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to top, #050a15 0%, #050a15 20%, transparent 100%)",
         }}
       />
 

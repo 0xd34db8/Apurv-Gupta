@@ -35,7 +35,9 @@ const ExperienceCard = ({ exp, i }: ExperienceProps) => {
         {/* Glow effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-        <div className={`relative z-10 flex flex-col md:flex-row md:justify-between md:items-start gap-4 ${isExpanded ? 'mb-6' : 'mb-0 sm:mb-6'}`}>
+        <div
+          className={`relative z-10 flex flex-col md:flex-row md:justify-between md:items-start gap-4 ${isExpanded ? "mb-6" : "mb-0 sm:mb-6"}`}
+        >
           <div className="max-w-2xl w-full">
             <div className="flex justify-between items-center w-full">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-200 transition-all duration-300">
@@ -55,20 +57,30 @@ const ExperienceCard = ({ exp, i }: ExperienceProps) => {
                   setIsExpanded(!isExpanded);
                 }}
               >
-                {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                {isExpanded ? (
+                  <ChevronUp size={24} />
+                ) : (
+                  <ChevronDown size={24} />
+                )}
               </button>
             </div>
-            <p className={`mt-2 text-lg sm:text-xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 font-medium tracking-wide ${!isExpanded ? 'hidden sm:block' : 'block'}`}>
+            <p
+              className={`mt-2 text-lg sm:text-xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 font-medium tracking-wide ${!isExpanded ? "hidden sm:block" : "block"}`}
+            >
               {exp.company}
             </p>
           </div>
 
-          <div className={`inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-mono text-blue-300 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)] group-hover:border-blue-500/40 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition-all duration-300 whitespace-nowrap self-start ${!isExpanded ? 'hidden sm:inline-flex' : 'inline-flex mt-2 sm:mt-0'}`}>
+          <div
+            className={`inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-mono text-blue-300 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)] group-hover:border-blue-500/40 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition-all duration-300 whitespace-nowrap self-start ${!isExpanded ? "hidden sm:inline-flex" : "inline-flex mt-2 sm:mt-0"}`}
+          >
             {exp.duration}
           </div>
         </div>
 
-        <div className={`relative z-10 ${!isExpanded ? 'hidden sm:block' : 'block mt-6'}`}>
+        <div
+          className={`relative z-10 ${!isExpanded ? "hidden sm:block" : "block mt-6"}`}
+        >
           <ul className="space-y-4">
             {exp.description.map((desc: string, idx: number) => (
               <motion.li
@@ -98,7 +110,7 @@ export default function WorkExperience() {
   return (
     <section
       id="experience"
-      className="relative lg:py-24 sm:pt-20 px-4 pt-30 sm:px-6 md:px-16 pb-20 md:pb-24 bg-[#0a0d12] overflow-hidden"
+      className="relative lg:py-24 sm:pt-20 px-4 pt-30 sm:px-6 md:px-16 md:pb-28 bg-[#0a0d12] overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -126,14 +138,16 @@ export default function WorkExperience() {
       <div
         className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10"
         style={{
-          background: "linear-gradient(to bottom, #0a0d12 0%, transparent 100%)",
+          background:
+            "linear-gradient(to bottom, #0a0d12 0%, transparent 100%)",
         }}
       />
 
       <div
         className="absolute inset-x-0 bottom-0 h-40 md:h-52 pointer-events-none z-10"
         style={{
-          background: "linear-gradient(to top, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
+          background:
+            "linear-gradient(to top, #0a0d12 0%, #0a0d12 30%, transparent 100%)",
         }}
       />
 
@@ -141,7 +155,7 @@ export default function WorkExperience() {
       <WireframeOverlay
         src={Character}
         alt="Character"
-        className="md:pl-12 md:pt-48 pt-20"
+        className="md:pl-12 md:pt-48 pt-20 pb-12 md:pb-24"
         large
       />
 
